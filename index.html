@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <link rel="stylesheet" href="styles.css">
 
+    <script type="text/javascript" src="contact-store.js"></script>
 
 </head>
 <body>
@@ -42,7 +43,7 @@
         </div>
         <br>
         <div class="mdl-card__actions">
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Add</a>
+            <a onclick="saveContact()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Add</a>
         </div>
     </div>
     <div class="ca-line"></div>
@@ -66,4 +67,15 @@
     </table>
 </div>
 </body>
+
+<script>
+
+    //"namespace" definition
+    var contactsApp = {};
+
+    function saveContact() {
+        console.log('TODO: save');
+    }
+
+</script>
 </html>
