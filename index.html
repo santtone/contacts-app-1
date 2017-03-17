@@ -8,9 +8,13 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+
     <link rel="stylesheet" href="styles.css">
 
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="contact.js"></script>
     <script type="text/javascript" src="contact-store.js"></script>
+    <script type="text/javascript" src="contact-table-helper.js"></script>
 
 </head>
 <body>
@@ -47,7 +51,7 @@
         </div>
     </div>
     <div class="ca-line"></div>
-    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="contactTable">
         <thead>
         <tr>
             <th class="mdl-data-table__cell--non-numeric">First name</th>
@@ -57,12 +61,6 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td class="mdl-data-table__cell--non-numeric">Saimaan</td>
-            <td class="mdl-data-table__cell--non-numeric">Ammattikorkeakoulu</td>
-            <td class="mdl-data-table__cell--non-numeric">040 649 4800</td>
-            <td class="mdl-data-table__cell--non-numeric">Skinnarilankatu 36, Lappeenranta</td>
-        </tr>
         </tbody>
     </table>
 </div>
@@ -70,12 +68,23 @@
 
 <script>
 
-    //"namespace" definition
-    var contactsApp = {};
-
     function saveContact() {
-        console.log('TODO: save');
+        contactsApp.contactStore.saveContact(buildContactFromInput());
+        var saved = contactsApp.contactStore.loadContacts();
+        contactsApp.contactTableHelper.rebuildTable('contactTable', saved);
     }
+
+    function buildContactFromInput() {
+        return contactsApp.contact(
+            document.getElementById('firstName').value,
+            document.getElementById('lastName').value,
+            document.getElementById('phone').value,
+            document.getElementById('streetAddress').value,
+            document.getElementById('city').value
+        );
+    }
+
+    contactsApp.contactTableHelper.rebuildTable('contactTable', contactsApp.contactStore.loadContacts());
 
 </script>
 </html>
