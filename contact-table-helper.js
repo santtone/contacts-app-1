@@ -18,17 +18,14 @@ contactsApp.contactTableHelper = (function () {
 
     return {
         rebuildTableWithContacts: function (table, contacts) {
-
             deleteTableRows(table);
-            table.tBodies[0].innerHTML = '';
-
-            for (var i = 0; i < contacts.length; i++) {
+            _.forEach(contacts, function(c, i){
                 var row = table.insertRow(i + 1);
-                insertCellToRow(row, contacts[i].firstName, 0);
-                insertCellToRow(row, contacts[i].lastName, 1);
-                insertCellToRow(row, contacts[i].phone, 2);
-                insertCellToRow(row, contacts[i].address, 3);
-            }
+                insertCellToRow(row, c.firstName, 0);
+                insertCellToRow(row, c.lastName, 1);
+                insertCellToRow(row, c.phone, 2);
+                insertCellToRow(row, c.address, 3);
+            });
         }
     }
 })();
