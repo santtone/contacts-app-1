@@ -1,15 +1,26 @@
 contactsApp.contactTableHelper = (function () {
+
+    function deleteTableRows(table) {
+        var rowsToDelete = table.rows.length <= 1 ? 0 : table.rows.length;
+        if (!rowsToDelete) {
+            return;
+        }
+        for (var i = 1; i < rowsToDelete; i++) {
+            table.deleteRow(1);
+        }
+    }
+
+    function insertCellToRow(row, cellContent, cellIndex) {
+        var cell = row.insertCell(cellIndex);
+        cell.innerHTML = cellContent;
+        cell.className = 'mdl-data-table__cell--non-numeric'
+    }
+
     return {
-        rebuildTable: function (tableId, contacts) {
+        rebuildTableWithContacts: function (table, contacts) {
 
-            var table = document.getElementById(tableId);
+            deleteTableRows(table);
             table.tBodies[0].innerHTML = '';
-
-            function insertCellToRow(row, cellContent, cellIndex) {
-                var cell = row.insertCell(cellIndex);
-                cell.innerHTML = cellContent;
-                cell.className = 'mdl-data-table__cell--non-numeric'
-            }
 
             for (var i = 0; i < contacts.length; i++) {
                 var row = table.insertRow(i + 1);

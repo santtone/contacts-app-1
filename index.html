@@ -71,7 +71,9 @@
     function saveContact() {
         contactsApp.contactStore.saveContact(buildContactFromInput());
         var saved = contactsApp.contactStore.loadContacts();
-        contactsApp.contactTableHelper.rebuildTable('contactTable', saved);
+        contactsApp.contactTableHelper.rebuildTableWithContacts(
+            document.getElementById('contactTable'),
+            saved);
     }
 
     function buildContactFromInput() {
@@ -84,7 +86,9 @@
         );
     }
 
-    contactsApp.contactTableHelper.rebuildTable('contactTable', contactsApp.contactStore.loadContacts());
+    contactsApp.contactTableHelper.rebuildTableWithContacts(
+        document.getElementById('contactTable'),
+        contactsApp.contactStore.loadContacts());
 
 </script>
 </html>

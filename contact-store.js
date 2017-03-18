@@ -23,6 +23,9 @@ contactsApp.contactStore = (function () {
         },
         loadContacts: function () {
             return readLocalStorageContacts();
+        },
+        deleteContacts: function () {
+            writeLocalStorageContacts([]);
         }
     }
 })();
