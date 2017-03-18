@@ -24,7 +24,7 @@ contactsApp.contactTableHelper = (function () {
                 insertCellToRow(row, c.firstName, 0);
                 insertCellToRow(row, c.lastName, 1);
                 insertCellToRow(row, c.phone, 2);
-                insertCellToRow(row, c.address, 3);
+                insertCellToRow(row, contactsApp.utils.buildGoogleMapsLink(c.address), 3);
             });
         }
     }
