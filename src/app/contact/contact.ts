@@ -1,3 +1,5 @@
+import * as _ from 'lodash';
+
 export class Contact {
 
   firstName: string;
@@ -13,7 +15,9 @@ export class Contact {
   }
 
   private parseAddress(streetAddress, city) {
-    return streetAddress + ', ' + city;
+    let addressParts = [streetAddress || null, city || null];
+    addressParts = _.reject(addressParts, _.isNull);
+    return addressParts.join().replace(',', ', ');
   }
 
 }
