@@ -1,5 +1,3 @@
 <div>
-  <div *ngFor="let contact of contacts">
-    {{contact.firstName + ' ' + contact.lastName}}
-  </div>
+  <ca-contact-list [contacts]="contacts"></ca-contact-list>
 </div>

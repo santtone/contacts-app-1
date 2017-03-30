@@ -4,7 +4,7 @@ import {ContactStoreService} from "./contact/services/contact-store.service";
 
 
 @Component({
-  selector: 'app-root',
+  selector: 'ca-app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
