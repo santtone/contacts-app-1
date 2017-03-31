@@ -1,0 +1,15 @@
+.ca-contact-list-item-icon-container {
+  width: 400px;
+}
+
+.ca-contact-list-item-icon {
+  width: 80px;
+  height: 80px;
+  font-size: 80px;
+  color: white;
+}
+
+.ca-contact-list-item-footer-icon{
+  padding: 10px;
+  color: #616161;
+}

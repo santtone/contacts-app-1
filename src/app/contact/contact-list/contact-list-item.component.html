@@ -1,7 +1,35 @@
-<md-list>
-  <md-list-item>
-    <md-icon md-list-avatar>accountcircle</md-icon>
-    <h4 md-line>{{contact.firstName}} {{contact.lastName}}</h4>
-    <p md-line> blaah </p>
-  </md-list-item>
-</md-list>
+<md-card class="ca-contact-list-item-icon-container">
+  <div md-card-image>
+    <div fxLayout="row" fxLayoutAlign="center center" style="background: #7986CB">
+      <md-icon class="ca-contact-list-item-icon">account_circle</md-icon>
+    </div>
+  </div>
+  <md-card-content>
+    <div class="ca-text-header">
+      {{contact.firstName}} {{contact.lastName}}
+    </div>
+    <div class="ca-text-large">
+      {{contact.address}}
+    </div>
+    <div class="ca-text-large">
+      {{contact.phone}}
+    </div>
+  </md-card-content>
+  <md-card-actions>
+    <div fxLayout="row">
+      <div>
+        <button md-icon-button class="ca-icon-button">
+          <md-icon>delete</md-icon>
+        </button>
+        <button md-icon-button class="ca-icon-button">
+          <md-icon>edit</md-icon>
+        </button>
+      </div>
+      <div fxFlex fxlayout="row" fxLayoutAlign="end center">
+        <button md-icon-button class="ca-icon-button">
+          <md-icon>place</md-icon>
+        </button>
+      </div>
+    </div>
+  </md-card-actions>
+</md-card>

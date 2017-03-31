@@ -1,5 +1,7 @@
-<div>
-  <div *ngFor="let contact of contacts">
+ <div *ngFor="let contact of contacts; let i = index;">
     <ca-contact-list-item [contact]="contact"></ca-contact-list-item>
+
+    <div *ngIf="i < contacts.length-1">
+      <br>
+    </div>
   </div>
-</div>
