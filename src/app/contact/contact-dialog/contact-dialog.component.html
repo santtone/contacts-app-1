@@ -1,4 +1,4 @@
-<h1 md-dialog-title>New Contact</h1>
+<h1 md-dialog-title>{{contact.id ? 'Edit Contact' : 'New Contact'}}</h1>
 <div md-dialog-content>
   <md-input-container>
     <input mdInput [(ngModel)]="contact.firstName" required placeholder="First name" (ngModelChange)="validate()">
@@ -23,5 +23,5 @@
 </div>
 <div md-dialog-actions>
   <button md-button (click)="cancel()">Cancel</button>
-  <button md-button (click)="add()" [disabled]="!isValid">Add</button>
+  <button md-button (click)="add()" [disabled]="!isValid">{{contact.id ? 'Save' : 'Add'}}</button>
 </div>

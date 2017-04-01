@@ -9,6 +9,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {AppComponent} from './app.component';
 import {ContactLocalStorageService} from './contact/services/contact-localstorage.service';
 import {ContactService} from './contact/services/contact.service';
+import {DialogService} from './utils/dialog.service'
 import {ContactListComponent} from './contact/contact-list/contact-list.component';
 import {ContactListItemComponent} from './contact/contact-list/contact-list-item.component';
 import {ContactDialogComponent} from './contact/contact-dialog/contact-dialog.component'
@@ -29,7 +30,7 @@ import {ContactDialogComponent} from './contact/contact-dialog/contact-dialog.co
     FlexLayoutModule
   ],
   entryComponents: [ContactDialogComponent],
-  providers: [ContactService, ContactLocalStorageService],
+  providers: [DialogService, ContactService, ContactLocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

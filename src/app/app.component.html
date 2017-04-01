@@ -1,5 +1,8 @@
 <div fxLayout="column" fxLayoutAlign="start center">
-  <ca-contact-list [contacts]="contacts"></ca-contact-list>
+  <ca-contact-list
+    [contacts]="contacts"
+    (editContact)="onEditContact($event)"
+    (removeContact)="onDeleteContact($event)"></ca-contact-list>
 </div>
 <button md-fab class="ca-float-action-button" (click)="addContact()">
   <md-icon>add</md-icon>

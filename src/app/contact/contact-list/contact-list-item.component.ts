@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Contact} from '../contact';
 
 @Component({
@@ -7,5 +7,21 @@ import {Contact} from '../contact';
   styleUrls: ['./contact-list-item.component.css']
 })
 export class ContactListItemComponent {
+
   @Input() contact: Contact;
+  @Input() edit: EventEmitter<Contact>;
+  @Input() remove: EventEmitter<Contact>;
+  @Input() showOnMap: EventEmitter<Contact>;
+
+  editContact() {
+    this.edit.emit(this.contact);
+  }
+
+  removeContact() {
+    this.remove.emit(this.contact);
+  }
+
+  showContactOnMap() {
+    this.showOnMap.emit(this.contact);
+  }
 }

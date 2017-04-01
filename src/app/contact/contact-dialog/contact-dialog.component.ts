@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Contact} from '../contact';
 import {MdDialogRef} from "@angular/material";
 
 @Component({
   templateUrl: './contact-dialog.component.html'
 })
-export class ContactDialogComponent {
+export class ContactDialogComponent implements OnInit {
 
   dialogRef;
   contact: Contact;
@@ -13,7 +13,12 @@ export class ContactDialogComponent {
 
   constructor(dialogRef: MdDialogRef<ContactDialogComponent>) {
     this.dialogRef = dialogRef;
-    this.contact = new Contact();
+  }
+
+  ngOnInit(): void {
+    if (!this.contact) {
+      this.contact = new Contact();
+    }
     this.validate();
   }
 
