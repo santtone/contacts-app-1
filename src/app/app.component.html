@@ -1,4 +1,6 @@
 <div fxLayout="column" fxLayoutAlign="start center">
   <ca-contact-list [contacts]="contacts"></ca-contact-list>
 </div>
-<button md-fab class="ca-float-action-button"><md-icon>add</md-icon></button>
+<button md-fab class="ca-float-action-button" (click)="addContact()">
+  <md-icon>add</md-icon>
+</button>

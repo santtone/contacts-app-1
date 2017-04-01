@@ -1,0 +1,27 @@
+<h1 md-dialog-title>New Contact</h1>
+<div md-dialog-content>
+  <md-input-container>
+    <input mdInput [(ngModel)]="contact.firstName" required placeholder="First name" (ngModelChange)="validate()">
+  </md-input-container>
+  <br>
+  <md-input-container>
+    <input mdInput [(ngModel)]="contact.lastName" required placeholder="Last name" (ngModelChange)="validate()">
+  </md-input-container>
+  <br>
+  <md-input-container>
+    <input mdInput [(ngModel)]="contact.phone" placeholder="Phone">
+  </md-input-container>
+  <br>
+  <md-input-container>
+    <input mdInput [(ngModel)]="contact.streetAddress" placeholder="Street Address">
+  </md-input-container>
+  <br>
+  <md-input-container>
+    <input mdInput [(ngModel)]="contact.city" placeholder="City">
+  </md-input-container>
+
+</div>
+<div md-dialog-actions>
+  <button md-button (click)="cancel()">Cancel</button>
+  <button md-button (click)="add()" [disabled]="!isValid">Add</button>
+</div>
