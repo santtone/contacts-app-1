@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ContactStoreService} from "./contact/services/contact-store.service";
 import {MdDialog} from "@angular/material";
-import {NewContactDialogComponent} from "./contact/new-contact/new-contact-dialog.component";
+import {ContactDialogComponent} from "./contact/contact-dialog/contact-dialog.component";
 
 
 @Component({
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   }
 
   addContact() {
-    let dialogRef = this.dialog.open(NewContactDialogComponent);
+    let dialogRef = this.dialog.open(ContactDialogComponent);
     dialogRef.afterClosed().subscribe(contact => {
       if (contact) {
         this.contactStore.saveContact(contact);

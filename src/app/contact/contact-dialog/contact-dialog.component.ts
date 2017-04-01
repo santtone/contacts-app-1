@@ -3,15 +3,15 @@ import {Contact} from '../contact';
 import {MdDialogRef} from "@angular/material";
 
 @Component({
-  templateUrl: './new-contact-dialog.component.html'
+  templateUrl: './contact-dialog.component.html'
 })
-export class NewContactDialogComponent {
+export class ContactDialogComponent {
 
   dialogRef;
   contact: Contact;
   isValid: boolean;
 
-  constructor(dialogRef: MdDialogRef<NewContactDialogComponent>) {
+  constructor(dialogRef: MdDialogRef<ContactDialogComponent>) {
     this.dialogRef = dialogRef;
     this.contact = new Contact();
     this.validate();

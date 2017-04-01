@@ -10,14 +10,14 @@ import {AppComponent} from './app.component';
 import {ContactStoreService} from './contact/services/contact-store.service';
 import {ContactListComponent} from './contact/contact-list/contact-list.component';
 import {ContactListItemComponent} from './contact/contact-list/contact-list-item.component';
-import {NewContactDialogComponent} from './contact/new-contact/new-contact-dialog.component'
+import {ContactDialogComponent} from './contact/contact-dialog/contact-dialog.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactListComponent,
     ContactListItemComponent,
-    NewContactDialogComponent
+    ContactDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +27,7 @@ import {NewContactDialogComponent} from './contact/new-contact/new-contact-dialo
     MaterialRootModule,
     FlexLayoutModule
   ],
-  entryComponents: [NewContactDialogComponent],
+  entryComponents: [ContactDialogComponent],
   providers: [ContactStoreService],
   bootstrap: [AppComponent]
 })
