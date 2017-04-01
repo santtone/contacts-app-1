@@ -36,6 +36,11 @@ export class AppComponent implements OnInit {
     this.reloadContacts();
   }
 
+  onShowContactOnMap(contact: Contact) {
+    let address = contact.streetAddress + ', ' + contact.city;
+    this.dialog.mapDialog(address);
+  }
+
   reloadContacts() {
     this.contacts = this.contactService.findAllContacts();
   }

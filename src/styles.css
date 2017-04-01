@@ -1,11 +1,12 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-html, body{
+html, body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   height: 100%;
   width: 100%;
   overflow: hidden;
   background: #E0E0E0;
+  margin: 0;
 }
 
 @font-face {
@@ -31,18 +32,23 @@ html, body{
   -webkit-font-smoothing: antialiased;
 }
 
-.ca-text-header{
+.ca-text-header {
   font-size: 20px;
   margin-bottom: 6px;
   color: #424242;
 }
 
-.ca-text-large{
+.ca-text-large {
   font-size: 16px;
   margin-bottom: 2px;
   color: #424242;
 }
 
-.ca-icon-button{
+.ca-icon-button {
   color: #616161 !important;
+}
+
+/*Overriding Material styles*/
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  opacity: .70;
 }

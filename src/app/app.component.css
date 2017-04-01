@@ -1,5 +1,9 @@
-.ca-float-action-button{
+.ca-float-action-button {
   position: absolute;
   bottom: 10px;
   right: 10px;
+}
+
+.ca-app-container {
+  margin-top: 20px;
 }
