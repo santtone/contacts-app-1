@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {MaterialRootModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {NgPipesModule} from 'ngx-pipes';
 
 import {AppComponent} from './app.component';
 import {ContactLocalStorageService} from './contact/services/contact-localstorage.service';
@@ -29,7 +30,8 @@ import { MapDialogComponent } from './map/map-dialog/map-dialog.component'
     FormsModule,
     HttpModule,
     MaterialRootModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    NgPipesModule
   ],
   entryComponents: [ContactDialogComponent, MapDialogComponent],
   providers: [DialogService, ContactService, ContactLocalStorageService],

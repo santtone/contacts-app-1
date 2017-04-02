@@ -5,5 +5,8 @@
 }
 
 .ca-app-container {
-  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  overflow: auto;
+  height: 100%;
 }

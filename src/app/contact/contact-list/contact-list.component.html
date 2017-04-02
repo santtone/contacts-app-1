@@ -1,4 +1,4 @@
-<div *ngFor="let contact of contacts; let i = index;">
+<div *ngFor="let contact of contacts | orderBy: 'lastName'; let i = index;">
   <ca-contact-list-item
     [contact]="contact"
     [edit]="editContact"
