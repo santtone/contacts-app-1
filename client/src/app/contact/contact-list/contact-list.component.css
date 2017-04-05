@@ -1,0 +1,9 @@
+.ca-contact-list-container {
+  max-width: 500px;
+}
+
+.ca-line {
+  height: 2px;
+  background: rgba(63, 81, 181, 1);
+  margin: 26px;
+}
