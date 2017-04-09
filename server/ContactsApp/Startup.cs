@@ -25,6 +25,12 @@ namespace ContactsApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IContactService, ContactService>();
+
+            services.AddCors(o => o.AddPolicy("DevPolicy", builder =>
+            {
+                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            }));
+
             services.AddMvc();
         }
 
@@ -33,6 +39,8 @@ namespace ContactsApp
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            app.UseCors("DevPolicy");
 
             app.UseMvc();
         }
