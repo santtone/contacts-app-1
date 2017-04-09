@@ -25,8 +25,8 @@
           <md-icon>edit</md-icon>
         </button>
       </div>
-      <div fxFlex fxlayout="row" fxLayoutAlign="end center" (click)="showContactOnMap()">
-        <button md-icon-button class="ca-icon-button">
+      <div fxFlex fxlayout="row" fxLayoutAlign="end center">
+        <button *ngIf="contact.streetAddress || contact.city" md-icon-button class="ca-icon-button" (click)="showContactOnMap()">
           <md-icon>place</md-icon>
         </button>
       </div>
