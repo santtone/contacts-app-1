@@ -12,4 +12,7 @@ export class ContactApiService implements ContactStore{
 
   saveContact(contact: Contact) {
   }
+
+  deleteContact(contact: Contact) {
+  }
 }

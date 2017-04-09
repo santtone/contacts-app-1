@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {MdDialog} from "@angular/material";
-import {ContactDialogComponent} from "./contact/contact-dialog/contact-dialog.component";
 import {ContactService} from "./contact/services/contact.service";
 import {Contact} from "./contact/contact";
 import {DialogService} from "./utils/dialog.service";

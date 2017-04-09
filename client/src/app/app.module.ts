@@ -10,6 +10,7 @@ import {NgPipesModule} from 'ngx-pipes';
 import {AppComponent} from './app.component';
 import {ContactLocalStorageService} from './contact/services/contact-localstorage.service';
 import {ContactService} from './contact/services/contact.service';
+import {ContactApiService} from './contact/services/contact-api.service';
 import {DialogService} from './utils/dialog.service'
 import {ContactListComponent} from './contact/contact-list/contact-list.component';
 import {ContactListItemComponent} from './contact/contact-list/contact-list-item.component';
@@ -36,7 +37,7 @@ import { ContactAddressPipe } from './contact/pipes/contact-address.pipe'
     NgPipesModule
   ],
   entryComponents: [ContactDialogComponent, MapDialogComponent],
-  providers: [DialogService, ContactService, ContactLocalStorageService],
+  providers: [DialogService, ContactService, ContactLocalStorageService, ContactApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
