@@ -24,10 +24,10 @@ namespace ContactsApp.Services
 
         public Contact FindContactById(int id)
         {
-            return _contacts.FirstOrDefault(contact => contact.Id == id);
+            return _contacts.FirstOrDefault(c => c.Id == id);
         }
 
-        public void SaveContact(Contact contact)
+        public void CreateContact(Contact contact)
         {
             _contacts.Add(new Contact(
                 GetId(),
@@ -38,9 +38,20 @@ namespace ContactsApp.Services
                 contact.City));
         }
 
+        public void UpdateContact(int id, Contact contact)
+        {
+            var index = _contacts.FindIndex(c => c.Id == id);
+            _contacts[index] = contact;
+        }
+
+        public void DeleteContact(int id)
+        {
+            _contacts.RemoveAll(c => c.Id == id);
+        }
+
         private int GetId()
         {
-            var lastSaved = _contacts.OrderByDescending(contact => contact.Id).FirstOrDefault();
+            var lastSaved = _contacts.OrderByDescending(c => c.Id).FirstOrDefault();
             if (lastSaved != null)
             {
                 return lastSaved.Id + 1;

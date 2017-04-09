@@ -7,6 +7,8 @@ namespace ContactsApp.Services
     {
         List<Contact> FindAllContacts();
         Contact FindContactById(int id);
-        void SaveContact(Contact contact);
+        void CreateContact(Contact contact);
+        void UpdateContact(int id, Contact contact);
+        void DeleteContact(int id);
     }
 }

@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using ContactsApp.model;
 using ContactsApp.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -34,13 +37,21 @@ namespace ContactsApp.Controllers
         [HttpPost]
         public void Post([FromBody]Contact contact)
         {
-            _contactService.SaveContact(contact);
+            _contactService.CreateContact(contact);
         }
 
-        // DELETE api/contacts/5
+        // POST api/contacts/1
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody]Contact contact)
+        {
+            _contactService.UpdateContact(id, contact);
+        }
+
+        // DELETE api/contacts/1
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            _contactService.DeleteContact(id);
         }
     }
 }
