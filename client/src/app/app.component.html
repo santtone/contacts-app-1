@@ -7,7 +7,7 @@
       (showContactOnMap)="onShowContactOnMap($event)">
     </ca-contact-list>
   </div>
-  <div *ngIf="!contacts.length" fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+  <div *ngIf="!contacts || !contacts.length" fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
     <md-icon class="ca-no-contacts-icon">account_circle</md-icon>
     <p class="ca-no-contacts-text">No contacts...</p>
   </div>

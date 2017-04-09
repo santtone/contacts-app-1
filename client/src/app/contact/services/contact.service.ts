@@ -15,11 +15,11 @@ export class ContactService {
   }
 
   saveContact(contact: Contact) {
-    this.contactStore.saveContact(contact);
+    return this.contactStore.saveContact(contact);
   }
 
   deleteContact(contact: Contact) {
-    this.contactStore.deleteContact(contact);
+    return this.contactStore.deleteContact(contact);
   }
 
   findAllContacts() {

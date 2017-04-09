@@ -30,8 +30,8 @@ export class AppComponent implements OnInit {
   }
 
   onDeleteContact(contact: Contact) {
-    this.contactService.deleteContact(contact);
-    this.reloadContacts();
+    this.contactService.deleteContact(contact).subscribe(data => this.reloadContacts());
+
   }
 
   onShowContactOnMap(contact: Contact) {
@@ -40,14 +40,13 @@ export class AppComponent implements OnInit {
   }
 
   reloadContacts() {
-    this.contacts = this.contactService.findAllContacts();
+    this.contactService.findAllContacts().subscribe(contacts => this.contacts = contacts);
   }
 
   private editAndSaveContact(contact) {
     this.dialog.contactDialog(contact).subscribe(contact => {
       if (contact) {
-        this.contactService.saveContact(contact);
-        this.reloadContacts();
+        this.contactService.saveContact(contact).subscribe(data => this.reloadContacts());
       }
     });
   }

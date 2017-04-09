@@ -3,7 +3,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
-import {MaterialRootModule} from '@angular/material';
+import 'rxjs/add/operator/toPromise';
+import {MaterialModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {NgPipesModule} from 'ngx-pipes';
 
@@ -32,7 +33,7 @@ import { ContactAddressPipe } from './contact/pipes/contact-address.pipe'
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    MaterialRootModule,
+    MaterialModule,
     FlexLayoutModule,
     NgPipesModule
   ],
