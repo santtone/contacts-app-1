@@ -1,0 +1,17 @@
+.ca-no-contacts-text {
+  color: #BDBDBD;
+  font-size: 26px;
+}
+
+.ca-no-contacts-icon {
+  height: 250px;
+  width: 250px;
+  color: #BDBDBD;
+  font-size: 250px;
+}
+
+.ca-float-action-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}

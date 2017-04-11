@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Contact} from "../contact";
 import {ContactStore} from "./contact-store";
 import * as _ from "lodash";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class ContactLocalStorageService implements ContactStore {
@@ -24,10 +25,12 @@ export class ContactLocalStorageService implements ContactStore {
       });
     }
     this.writeLocalStorageContacts(contacts);
+    return Observable.from([]);
   }
 
   public loadContacts() {
-    return this.readLocalStorageContacts();
+    let contacts: Contact[] = this.readLocalStorageContacts();
+    return Observable.from(contacts);
   }
 
   public deleteContact(contact: Contact) {
@@ -36,6 +39,7 @@ export class ContactLocalStorageService implements ContactStore {
       return _.isEqual(contact.id, c.id);
     });
     this.writeLocalStorageContacts(contacts);
+    return Observable.from([]);
   }
 
   private initializeLocalStorage() {
