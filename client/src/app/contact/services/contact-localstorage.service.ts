@@ -25,12 +25,12 @@ export class ContactLocalStorageService implements ContactStore {
       });
     }
     this.writeLocalStorageContacts(contacts);
-    return Observable.from([]);
+    return Observable.of(contacts);
   }
 
   public loadContacts() {
     let contacts: Contact[] = this.readLocalStorageContacts();
-    return Observable.from(contacts);
+    return Observable.of(contacts);
   }
 
   public deleteContact(contact: Contact) {
@@ -39,7 +39,7 @@ export class ContactLocalStorageService implements ContactStore {
       return _.isEqual(contact.id, c.id);
     });
     this.writeLocalStorageContacts(contacts);
-    return Observable.from([]);
+    return Observable.of(contacts);
   }
 
   private initializeLocalStorage() {

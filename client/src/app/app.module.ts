@@ -27,7 +27,7 @@ import { LoginComponent } from './user/login/login.component';
 import { ContactsComponent } from './contact/contacts.component'
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'contacts', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'contacts', component: ContactsComponent }
 ];
