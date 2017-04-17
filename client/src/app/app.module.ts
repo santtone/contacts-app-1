@@ -10,6 +10,8 @@ import {RouterModule, Routes}   from '@angular/router';
 //other modules
 import 'rxjs/add/operator/toPromise';
 import {NgPipesModule} from 'ngx-pipes';
+import 'hammerjs';
+import 'lodash';
 //components
 import {AppComponent} from './app.component';
 import {ContactListComponent} from './contact/contact-list/contact-list.component';

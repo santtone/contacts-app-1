@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Contact} from "../contact";
-import {ContactStore} from "./contact-store";
-import * as _ from "lodash";
-import {Observable} from "rxjs";
+import {Contact} from '../contact';
+import {ContactStore} from './contact-store';
+import {Observable} from 'rxjs';
+import * as _ from 'lodash';
 
 @Injectable()
 export class ContactLocalStorageService implements ContactStore {

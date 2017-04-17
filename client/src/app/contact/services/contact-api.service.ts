@@ -4,7 +4,6 @@ import {ContactStore} from "./contact-store";
 import {Contact} from "../contact";
 import {environment} from '../../../environments/environment';
 
-
 @Injectable()
 export class ContactApiService implements ContactStore {
 
