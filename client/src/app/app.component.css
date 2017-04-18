@@ -1,6 +1,19 @@
 .ca-app-container {
-  padding-top: 20px;
-  padding-bottom: 20px;
   overflow: auto;
   height: 100%;
+}
+
+.ca-sidenav{
+  width: 200px;
+}
+
+.ca-sidenav-container{
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ca-toolbar-placeholder-fix {
+  height: 64px;
 }

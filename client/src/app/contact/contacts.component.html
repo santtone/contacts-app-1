@@ -1,9 +1,9 @@
-<div fxLayout="column" fxLayoutAlign="start center">
-  <ca-contact-list
-    [contacts]="contacts"
-    (editContact)="onEditContact($event)"
-    (removeContact)="onDeleteContact($event)"
-    (showContactOnMap)="onShowContactOnMap($event)">
+<div class="ca-contact-list-container" fxLayout="column" fxLayoutAlign="start center">
+  <ca-contact-list class="ca-contact-list"
+                   [contacts]="contacts"
+                   (editContact)="onEditContact($event)"
+                   (removeContact)="onDeleteContact($event)"
+                   (showContactOnMap)="onShowContactOnMap($event)">
   </ca-contact-list>
 </div>
 <div *ngIf="!contacts || !contacts.length" fxLayout="column" fxLayoutAlign="center center" fxFlexFill>

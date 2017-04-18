@@ -1,3 +1,18 @@
-<div class="ca-app-container">
-  <router-outlet></router-outlet>
-</div>
+<md-sidenav-container class="ca-sidenav-container">
+  <md-sidenav class="ca-sidenav" #sidenav [mode]="sidenavMode" [opened]="sidenavMode == 'side'">
+    Sidenav content
+  </md-sidenav>
+  <md-toolbar *ngIf="!toolbarDisabled" class="mat-elevation-z5" color="primary">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <button md-icon-button (click)="sidenav.toggle()">
+        <md-icon>menu</md-icon>
+      </button>
+      Title
+    </div>
+  </md-toolbar>
+  <div class="ca-app-container">
+    <div class="ca-toolbar-placeholder-fix"></div>
+    <router-outlet></router-outlet>
+  </div>
+</md-sidenav-container>
+

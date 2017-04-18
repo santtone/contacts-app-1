@@ -52,3 +52,12 @@ html, body {
 .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
   opacity: .70;
 }
+
+.mat-sidenav-content{
+  overflow: hidden !important;
+}
+
+.mat-toolbar {
+  position: fixed;
+  z-index: 9999;
+}

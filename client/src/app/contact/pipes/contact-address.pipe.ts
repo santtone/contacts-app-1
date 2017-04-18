@@ -12,7 +12,7 @@ export class ContactAddressPipe implements PipeTransform {
     function parseAddress(streetAddress, city) {
       let addressParts = [streetAddress || null, city || null];
       addressParts = _.reject(addressParts, _.isNull);
-      return addressParts.join().replace(',', ', ');
+      return addressParts.join(', ');
     }
     return parseAddress(contact.streetAddress, contact.city);
   }
