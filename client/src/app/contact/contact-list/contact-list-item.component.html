@@ -1,20 +1,18 @@
-<md-card class="">
-  <div md-card-image>
-    <div fxLayout="row" fxLayoutAlign="center center" style="background: #7986CB">
-      <md-icon class="ca-contact-list-item-icon">account_circle</md-icon>
+<md-card>
+    <div md-card-image fxLayout="row" class="ca-contact-list-item-content">
+      <md-icon class="ca-contact-list-item-icon">face</md-icon>
+      <md-card-content>
+        <div class="ca-contact-list-item-title">
+          {{contact.firstName}} {{contact.lastName}}
+        </div>
+        <div class="ca-contact-list-item-subtitle">
+          {{contact | contactAddress}}
+        </div>
+        <div class="ca-contact-list-item-subtitle">
+          {{contact.phone}}
+        </div>
+      </md-card-content>
     </div>
-  </div>
-  <md-card-content>
-    <div class="ca-text-header">
-      {{contact.firstName}} {{contact.lastName}}
-    </div>
-    <div class="ca-text-large">
-      {{contact | contactAddress}}
-    </div>
-    <div class="ca-text-large">
-      {{contact.phone}}
-    </div>
-  </md-card-content>
   <md-card-actions>
     <div fxLayout="row">
       <div>
