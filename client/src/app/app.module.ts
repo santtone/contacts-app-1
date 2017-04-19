@@ -21,7 +21,6 @@ import { MapDialogComponent } from './map/map-dialog/map-dialog.component';
 //services
 import {ContactLocalStorageService} from './contact/services/contact-localstorage.service';
 import {ContactService} from './contact/services/contact.service';
-import {ContactApiService} from './contact/services/contact-api.service';
 import {DialogService} from './utils/dialog.service'
 //pipes
 import { ContactAddressPipe } from './contact/pipes/contact-address.pipe';
@@ -56,7 +55,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   entryComponents: [ContactDialogComponent, MapDialogComponent],
-  providers: [DialogService, ContactService, ContactLocalStorageService, ContactApiService],
+  providers: [DialogService, ContactService, ContactLocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

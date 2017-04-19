@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Contact} from '../contact';
-import {ContactStore} from './contact-store';
 import {Observable} from 'rxjs';
 import * as _ from 'lodash';
 
 @Injectable()
-export class ContactLocalStorageService implements ContactStore {
+export class ContactLocalStorageService {
 
   private localStorageKey = 'ca-contacts';
 
@@ -25,12 +24,10 @@ export class ContactLocalStorageService implements ContactStore {
       });
     }
     this.writeLocalStorageContacts(contacts);
-    return Observable.of(contacts);
   }
 
   public loadContacts() {
-    let contacts: Contact[] = this.readLocalStorageContacts();
-    return Observable.of(contacts);
+    return this.readLocalStorageContacts();
   }
 
   public deleteContact(contact: Contact) {
@@ -39,7 +36,6 @@ export class ContactLocalStorageService implements ContactStore {
       return _.isEqual(contact.id, c.id);
     });
     this.writeLocalStorageContacts(contacts);
-    return Observable.of(contacts);
   }
 
   private initializeLocalStorage() {
