@@ -32,8 +32,13 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
-.ca-icon-button {
-  color: #616161 !important;
+.ca-card{
+  max-width: 500px;
+  min-width: 300px;
+}
+
+.ca-icon{
+  color: #616161;
 }
 
 /*Overriding Material styles*/
