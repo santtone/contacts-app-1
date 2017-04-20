@@ -11,7 +11,7 @@ export class ContactService {
   private contactStore: ContactStore;
 
   constructor(localStorage: ContactLocalStorageService, webApiStorage: ContactApiService) {
-    this.contactStore = environment.localStorageOnly ? localStorage : webApiStorage;
+    this.contactStore = environment.endpointUrl ? webApiStorage : localStorage;
   }
 
   saveContact(contact: Contact) {
