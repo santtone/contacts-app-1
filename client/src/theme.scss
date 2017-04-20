@@ -1,0 +1,28 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+//https://material.io/color/#!/?view.left=0&view.right=0&primary.color=0277BD
+$ca-primary: mat-palette($mat-light-blue, 800);
+$ca-accent: mat-palette($mat-pink, 500);
+$ca-warn: mat-palette($mat-red);
+
+$ca-theme: mat-light-theme($ca-primary, $ca-accent, $ca-warn);
+
+@include angular-material-theme($ca-theme);
+
+.ca-color-primary {
+  background: mat-color($ca-primary);
+}
+
+.ca-color-primary-light {
+  background: #58a5f0;
+}
+
+.ca-color-primary-dark {
+  background: #003c8f;
+}
+
+.ca-color-accent {
+  background: mat-color($ca-accent);
+}
