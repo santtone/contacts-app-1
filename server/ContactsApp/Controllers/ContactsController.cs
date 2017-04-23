@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ContactsApp.model;
 using ContactsApp.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ContactsApp.Controllers
@@ -21,6 +22,7 @@ namespace ContactsApp.Controllers
 
         // GET api/contacts
         [HttpGet]
+        [Authorize("Bearer")]
         public List<Contact> Get()
         {
             return _contactService.FindAllContacts();
