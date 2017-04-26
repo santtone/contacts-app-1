@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Selectors;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ContactsApp.Controllers.Communication
+﻿namespace ContactsApp.Controllers.Communication
 {
     public class AuthRequest
     {

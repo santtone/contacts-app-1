@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ContactsApp.Model;
-
-namespace ContactsApp.Controllers.Communication
+﻿namespace ContactsApp.Controllers.Communication
 {
     public class AuthResponse
     {
-        public User User { get; set; }
+        public string UserId { get; set; }
         public string Token { get; set; }
 
-        public AuthResponse(User user, string token)
+        public AuthResponse(string userId, string token)
         {
-            User = user;
+            UserId = userId;
             Token = token;
         }
     }
