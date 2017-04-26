@@ -20,7 +20,7 @@
         <allow-intent href="market:*" />
 		<hook type="before_platform_add" src="hooks/install-plugins.js" />
 		<hook type="after_prepare" src="hooks/include-cordova.js" />
-		<preference name="android-minSdkVersion" value="25" />
+		<preference name="android-minSdkVersion" value="23" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />

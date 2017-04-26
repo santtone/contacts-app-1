@@ -27,6 +27,7 @@ import {DialogService} from './utils/dialog.service'
 import { ContactAddressPipe } from './contact/pipes/contact-address.pipe';
 import { LoginComponent } from './user/login/login.component';
 import { ContactsComponent } from './contact/contacts.component'
+import {DeviceService} from "./utils/device.service";
 
 const routes: Routes = [
   { path: '', redirectTo: 'contacts', pathMatch: 'full' },
@@ -56,7 +57,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   entryComponents: [ContactDialogComponent, MapDialogComponent],
-  providers: [DialogService, ContactService, ContactLocalStorageService, ContactApiService],
+  providers: [DialogService, ContactService, ContactLocalStorageService, ContactApiService, DeviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
