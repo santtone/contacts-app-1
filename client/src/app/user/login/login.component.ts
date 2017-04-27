@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {User} from "../user";
 import {Router} from "@angular/router";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-login',
@@ -12,14 +13,17 @@ export class LoginComponent implements OnInit {
 
   user: User;
 
-  constructor(private router: Router) { }
+  constructor(private userService: UserService, private router: Router) {
+  }
 
   ngOnInit() {
     this.user = new User();
   }
 
-  login(){
-    this.router.navigate(['/contacts']);
+  login() {
+    this.userService.login(this.user.username, this.user.password).subscribe(() => {
+      this.router.navigate(['/contacts']);
+    });
   }
 
 }

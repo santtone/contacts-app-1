@@ -16,5 +16,10 @@ namespace ContactsApp.Services
         {
             return _userRepository.FindByUsername(username);
         }
+
+        public User FindUserByUsernameAndPassword(string username, string password)
+        {
+            return _userRepository.FindByUsernameAndPassword(username, password);
+        }
     }
 }

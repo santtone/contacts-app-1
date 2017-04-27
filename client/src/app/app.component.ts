@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.sidenav);
     this.onWindowResize(null);
     this.router.events
       .subscribe(event => {

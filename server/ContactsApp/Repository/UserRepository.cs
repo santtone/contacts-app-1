@@ -21,5 +21,10 @@ namespace ContactsApp.Repository
         {
             return _users.FirstOrDefault(u => u.Username == username);
         }
+
+        public User FindByUsernameAndPassword(string username, string password)
+        {
+            return _users.FirstOrDefault(u => u.Username == username && u.Password == password);
+        }
     }
 }

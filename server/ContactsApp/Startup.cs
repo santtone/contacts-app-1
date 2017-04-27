@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using ContactsApp.Config;
 using ContactsApp.Repository;
 using ContactsApp.Services;
@@ -39,14 +38,15 @@ namespace ContactsApp
             {
                 builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
             }));
-
+            
             services.AddMvc();
 
             services.AddAuthorization(auth =>
             {
                 auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
                     .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
-                    .RequireAuthenticatedUser().Build());
+                    .RequireAuthenticatedUser()
+                    .Build());
             });
         }
 

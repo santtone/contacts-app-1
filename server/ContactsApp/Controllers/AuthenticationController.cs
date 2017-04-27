@@ -18,7 +18,7 @@ namespace ContactsApp.Controllers
         [HttpPost]
         public IActionResult Authenticate([FromBody] AuthRequest authRequest)
         {
-            var user = _userService.FindUserByUsername(authRequest.Username);
+            var user = _userService.FindUserByUsernameAndPassword(authRequest.Username, authRequest.Password);
             if (user == null) return Unauthorized();
             var token = TokenBuilder.Build(user);
             return new JsonResult(new AuthResponse(user.Id.ToString(), token));

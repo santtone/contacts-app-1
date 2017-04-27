@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ContactsApp.Controllers
 {
     [Route("api/contacts")]
+    [Authorize("Bearer")]
     public class ContactsController : Controller
     {
         private readonly IContactService _contactService;
@@ -16,37 +17,31 @@ namespace ContactsApp.Controllers
         {
             _contactService = contactService;
         }
-
-        // GET api/contacts
+        
         [HttpGet]
-        [Authorize("Bearer")]
         public List<Contact> Get()
         {
             return _contactService.FindAllContacts();
         }
-
-        // GET api/contacts/1
+        
         [HttpGet("{id}")]
         public Contact Get(int id)
         {
             return _contactService.FindContactById(id);
         }
-
-        // POST api/contacts
+        
         [HttpPost]
-        public void Post([FromBody]Contact contact)
+        public void Create([FromBody]Contact contact)
         {
             _contactService.CreateContact(contact);
         }
-
-        // POST api/contacts/1
+        
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Contact contact)
+        public void Update(int id, [FromBody]Contact contact)
         {
             _contactService.UpdateContact(id, contact);
         }
-
-        // DELETE api/contacts/1
+        
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
