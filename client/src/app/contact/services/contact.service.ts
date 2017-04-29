@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import { environment } from '../../../environments/environment';
+import {environment} from '../../../environments/environment';
 import {ContactLocalStorageService} from "./contact-localstorage.service";
 import {Contact} from "../contact";
 import {ContactStore} from "./contact-store";
@@ -24,6 +24,10 @@ export class ContactService {
 
   findAllContacts() {
     return this.contactStore.loadContacts();
+  }
+
+  findContactById(id) {
+    return this.contactStore.findContactById(id);
   }
 
 }

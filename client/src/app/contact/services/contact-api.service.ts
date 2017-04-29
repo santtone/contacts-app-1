@@ -4,6 +4,7 @@ import {ContactStore} from "./contact-store";
 import {Contact} from "../contact";
 import {environment} from '../../../environments/environment';
 import {HttpService} from "../../utils/http.service";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class ContactApiService implements ContactStore {
@@ -19,6 +20,10 @@ export class ContactApiService implements ContactStore {
       .map(function (response) {
         return response.json() as Contact[];
       });
+  }
+
+  findContactById(id): Observable<Contact> {
+    return null;
   }
 
   saveContact(contact: Contact) {

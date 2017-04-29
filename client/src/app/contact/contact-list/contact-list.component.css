@@ -1,9 +1,40 @@
-.ca-contact-list-container {
-  max-width: 500px;
-}
-
 .ca-line {
   height: 2px;
   background: rgba(63, 81, 181, 1);
   margin: 26px;
+}
+
+.ca-no-contacts-text {
+  color: #BDBDBD;
+  font-size: 26px;
+}
+
+.ca-no-contacts-icon {
+  height: 250px;
+  width: 250px;
+  color: #BDBDBD;
+  font-size: 250px;
+}
+
+.ca-float-action-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.ca-contact-list {
+  width: 100%;
+  max-width: 500px;
+}
+
+.ca-contact-list-container {
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-bottom: 40px;
+}
+
+.ca-contact-list-item {
+  max-width: 500px;
+  min-width: 250px;
+  width: 100%;
 }

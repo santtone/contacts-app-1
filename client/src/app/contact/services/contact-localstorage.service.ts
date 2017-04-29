@@ -33,6 +33,11 @@ export class ContactLocalStorageService implements ContactStore {
     return Observable.of(contacts);
   }
 
+  public findContactById(id) {
+    let contacts: Contact[] = this.readLocalStorageContacts();
+    return Observable.of(_.find(contacts, {'id': id}))
+  }
+
   public deleteContact(contact: Contact) {
     let contacts = this.readLocalStorageContacts();
     _.remove(contacts, function (c: Contact) {

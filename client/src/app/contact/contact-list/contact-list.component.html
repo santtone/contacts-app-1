@@ -1,11 +1,20 @@
-<div *ngFor="let contact of contacts | orderBy: 'lastName'; let i = index;">
-  <ca-contact-list-item
-    [contact]="contact"
-    [edit]="editContact"
-    [remove]="removeContact"
-    [showOnMap]="showContactOnMap">
-  </ca-contact-list-item>
-  <div *ngIf="i < contacts.length-1">
-    <br>
+<div class="ca-contact-list-container" fxLayout="column" fxLayoutAlign="start center">
+  <div *ngFor="let contact of contacts | orderBy: 'lastName'; let i = index;" class="ca-contact-list-item">
+    <ca-contact-card
+      [contact]="contact"
+      (edit)="editContact($event)"
+      (remove)="removeContact($event)"
+      (showOnMap)="showContactOnMap($event)">
+    </ca-contact-card>
+    <div *ngIf="i < contacts.length-1">
+      <br>
+    </div>
   </div>
 </div>
+<div *ngIf="!contacts || !contacts.length" fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+  <md-icon class="ca-no-contacts-icon">account_circle</md-icon>
+  <p class="ca-no-contacts-text">No contacts...</p>
+</div>
+<button md-fab color="primary" class="ca-float-action-button" (click)="addContact()">
+  <md-icon>add</md-icon>
+</button>

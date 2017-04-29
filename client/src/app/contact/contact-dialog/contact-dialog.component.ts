@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ReflectiveInjector} from '@angular/core';
 import {Contact} from '../contact';
 import {MdDialogRef} from "@angular/material";
 
@@ -7,12 +7,10 @@ import {MdDialogRef} from "@angular/material";
 })
 export class ContactDialogComponent implements OnInit {
 
-  dialogRef;
   contact: Contact;
   isValid: boolean;
 
-  constructor(dialogRef: MdDialogRef<ContactDialogComponent>) {
-    this.dialogRef = dialogRef;
+  constructor(private dialogRef?: MdDialogRef<ContactDialogComponent>) {
   }
 
   ngOnInit(): void {

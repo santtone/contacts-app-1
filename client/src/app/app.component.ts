@@ -2,6 +2,7 @@ import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 import * as _ from 'lodash';
 import {MdSidenav} from "@angular/material";
+import {MediaChange, ObservableMedia} from "@angular/flex-layout";
 
 @Component({
   selector: 'ca-app-root',
@@ -15,19 +16,12 @@ export class AppComponent implements OnInit {
 
   @ViewChild('sidenav') sidenav: MdSidenav;
 
-  @HostListener('window:resize', ['$event'])
-  onWindowResize(event) {
-    let width = event ? event.target.innerWidth : window.innerWidth;
-    this.sidenavMode = width >= 600 ? 'side' : 'over';
-  }
-
-  constructor(private router: Router) {
+  constructor(private router: Router, private media: ObservableMedia) {
     this.toolbarDisabled = false;
     this.sidenavMode = 'over'
   }
 
   ngOnInit(): void {
-    this.onWindowResize(null);
     this.router.events
       .subscribe(event => {
         if (event instanceof NavigationEnd) {
@@ -38,9 +32,12 @@ export class AppComponent implements OnInit {
           this.toolbarDisabled = false;
         }
       });
+    this.media.subscribe((change: MediaChange) => {
+      this.sidenavMode = (change.mqAlias == 'xs') || (change.mqAlias == 'sm') ? 'over' : 'side';
+    });
   }
 
-  toggle(){
+  toggle() {
     this.sidenav.toggle(!this.sidenav._isOpened);
   }
 }

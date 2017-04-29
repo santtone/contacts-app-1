@@ -4,7 +4,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {ConnectionBackend, Http, HttpModule, RequestOptions, XHRBackend} from '@angular/http';
-import {MaterialModule} from '@angular/material';
+import {MaterialModule, MdDialogRef} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule, Routes}   from '@angular/router';
 //other modules
@@ -15,11 +15,11 @@ import 'lodash';
 //components
 import {AppComponent} from './app.component';
 import {ContactListComponent} from './contact/contact-list/contact-list.component';
-import {ContactListItemComponent} from './contact/contact-list/contact-list-item.component';
+import {ContactListItemComponent} from './contact/contact-card/contact-card.component';
 import {ContactDialogComponent} from './contact/contact-dialog/contact-dialog.component';
 import {MapDialogComponent} from './map/map-dialog/map-dialog.component';
 import {LoginComponent} from './user/login/login.component';
-import {ContactsComponent} from './contact/contacts.component';
+import {ContactComponent} from './contact/contact.component';
 //services
 import {ContactLocalStorageService} from './contact/services/contact-localstorage.service';
 import {ContactService} from './contact/services/contact.service';
@@ -32,11 +32,13 @@ import {HttpService} from "./utils/http.service";
 //pipes
 import {ContactAddressPipe} from './contact/pipes/contact-address.pipe';
 import {UserApiService} from "./user/services/user-api.service";
+import { ContactInfoComponent } from './contact/contact-info/contact-info.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'contacts', component: ContactsComponent}
+  {path: 'contacts', component: ContactListComponent},
+  {path: 'contacts/:id', component: ContactComponent}
 ];
 
 export function getHttp(backend: ConnectionBackend, options: RequestOptions) {
@@ -52,7 +54,8 @@ export function getHttp(backend: ConnectionBackend, options: RequestOptions) {
     MapDialogComponent,
     ContactAddressPipe,
     LoginComponent,
-    ContactsComponent
+    ContactComponent,
+    ContactInfoComponent
   ],
   imports: [
     BrowserModule,
