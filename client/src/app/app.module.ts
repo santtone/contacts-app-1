@@ -34,6 +34,7 @@ import {ContactAddressPipe} from './contact/pipes/contact-address.pipe';
 import {UserApiService} from "./user/services/user-api.service";
 import { ContactInfoComponent } from './contact/contact-info/contact-info.component';
 import {ToolbarService} from "./utils/toolbar.service";
+import { VibrationDirective } from './utils/vibration.directive';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -57,7 +58,8 @@ export function getHttp(backend: ConnectionBackend, options: RequestOptions) {
     ContactAddressPipe,
     LoginComponent,
     ContactComponent,
-    ContactInfoComponent
+    ContactInfoComponent,
+    VibrationDirective
   ],
   imports: [
     BrowserModule,

@@ -16,15 +16,15 @@
   <md-card-actions>
     <div fxLayout="row">
       <div>
-        <button md-icon-button (click)="removeContact()">
+        <button caVibration md-icon-button (click)="removeContact()">
           <md-icon class="ca-icon">delete</md-icon>
         </button>
-        <button md-icon-button (click)="editContact()">
+        <button caVibration md-icon-button (click)="editContact()">
           <md-icon class="ca-icon">edit</md-icon>
         </button>
       </div>
       <div fxFlex fxlayout="row" fxLayoutAlign="end center">
-        <button *ngIf="contact.streetAddress || contact.city" md-icon-button (click)="showContactOnMap()">
+        <button caVibration *ngIf="contact.streetAddress || contact.city" md-icon-button (click)="showContactOnMap()">
           <md-icon class="ca-icon">place</md-icon>
         </button>
       </div>
