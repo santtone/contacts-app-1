@@ -1,4 +1,5 @@
-import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {Location} from '@angular/common';
 import {NavigationEnd, Router} from "@angular/router";
 import * as _ from 'lodash';
 import {MdSidenav} from "@angular/material";
@@ -18,7 +19,8 @@ export class AppComponent implements OnInit {
 
   @ViewChild('sidenav') sidenav: MdSidenav;
 
-  constructor(private router: Router, private media: ObservableMedia, private toolbar: ToolbarService) {
+  constructor(private router: Router, private media: ObservableMedia,
+              private toolbar: ToolbarService, private location: Location) {
     this.toolbarDisabled = false;
     this.sidenavMode = 'over';
     this.toolbarProperties = toolbar.defaultProperties;
@@ -45,5 +47,9 @@ export class AppComponent implements OnInit {
 
   toggle() {
     this.sidenav.toggle(!this.sidenav._isOpened);
+  }
+
+  navigateBack(){
+    this.location.back();
   }
 }

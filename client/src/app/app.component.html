@@ -12,8 +12,11 @@
   </md-sidenav>
   <md-toolbar *ngIf="!toolbarProperties.hidden" class="mat-elevation-z5" color="primary">
     <div fxLayout="row" fxLayoutAlign="start center" fxFlexFill>
-      <button md-icon-button (click)="toggle()">
+      <button *ngIf="!toolbarProperties.backEnabled" md-icon-button (click)="toggle()">
         <md-icon>menu</md-icon>
+      </button>
+      <button *ngIf="toolbarProperties.backEnabled" md-icon-button (click)="navigateBack()">
+        <md-icon>arrow_back</md-icon>
       </button>
       <div fxFlex="100">
         {{toolbarProperties.title || ''}}

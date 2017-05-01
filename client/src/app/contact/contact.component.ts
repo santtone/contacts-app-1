@@ -25,7 +25,7 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       let id = +params['id'];
-      this.toolbar.create(new ToolbarProperties(id ? 'Edit Contact' : 'New Contact', this.save.bind(this)));
+      this.toolbar.create(new ToolbarProperties(id ? 'Edit Contact' : 'New Contact', this.save.bind(this), true));
       if (id) {
         this.contactService.findContactById(id).subscribe(contact => {
           this.contact = contact || new Contact();
