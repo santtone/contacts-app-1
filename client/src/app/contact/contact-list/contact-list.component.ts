@@ -4,6 +4,7 @@ import {ContactService} from "../services/contact.service";
 import {DialogService} from "../../utils/dialog.service";
 import {ObservableMedia} from "@angular/flex-layout";
 import {Router} from "@angular/router";
+import {ToolbarProperties, ToolbarService} from "../../utils/toolbar.service";
 
 @Component({
   selector: 'ca-contact-list',
@@ -15,12 +16,13 @@ export class ContactListComponent implements OnInit {
   contacts: Contact[];
 
   constructor(public contactService: ContactService, public dialog: DialogService,
-              private media: ObservableMedia, private router: Router ) {
+              private media: ObservableMedia, private router: Router, private toolbar: ToolbarService) {
     this.contacts = [];
   }
 
   ngOnInit(): void {
     this.reloadContacts();
+    this.toolbar.create(new ToolbarProperties('Contacts'));
   }
 
   addContact() {
@@ -46,7 +48,11 @@ export class ContactListComponent implements OnInit {
 
   private editAndSaveContact(contact: Contact) {
     if(this.media.isActive('xs') || this.media.isActive('sm')){
-      this.router.navigate(['/contacts', contact.id]);
+      if(contact) {
+        this.router.navigate(['/contacts', contact.id]);
+      }else{
+        this.router.navigate(['/contacts/new']);
+      }
       return;
     }
     this.dialog.contactDialog(contact).subscribe(contact => {

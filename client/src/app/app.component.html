@@ -1,5 +1,6 @@
 <md-sidenav-container class="ca-sidenav-container">
-  <md-sidenav *ngIf="!toolbarDisabled" class="ca-sidenav" name="sidenav" #sidenav [mode]="sidenavMode" [opened]="sidenavMode == 'side'">
+  <md-sidenav *ngIf="!toolbarProperties.hidden" class="ca-sidenav" name="sidenav" #sidenav [mode]="sidenavMode"
+              [opened]="sidenavMode == 'side'">
     <div fxLayout="row" class="ca-sidenav-toolbar">
       <div fxLayout="column" fxLayoutAlign="center start">
         <md-icon style="width: 80px; height: 80px; font-size: 80px">account_circle</md-icon>
@@ -7,18 +8,23 @@
         <div style="font-size: 12px">anttonen.sami@gmail.com</div>
       </div>
     </div>
-    <div class="ca-sidenav-content">MOI</div>
+    <div class="ca-sidenav-content">Content</div>
   </md-sidenav>
-  <md-toolbar *ngIf="!toolbarDisabled" class="mat-elevation-z5" color="primary">
-    <div fxLayout="row" fxLayoutAlign="start center">
+  <md-toolbar *ngIf="!toolbarProperties.hidden" class="mat-elevation-z5" color="primary">
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlexFill>
       <button md-icon-button (click)="toggle()">
         <md-icon>menu</md-icon>
       </button>
-      Title
+      <div fxFlex="100">
+        {{toolbarProperties.title || ''}}
+      </div>
+      <button *ngIf="toolbarProperties.submitAction" md-icon-button (click)="toolbarProperties.submitAction()">
+        <md-icon>check</md-icon>
+      </button>
     </div>
   </md-toolbar>
   <div class="ca-app-container">
-    <div *ngIf="!toolbarDisabled" class="ca-toolbar-placeholder-fix"></div>
+    <div *ngIf="!toolbarProperties.hidden" class="ca-toolbar-placeholder-fix"></div>
     <router-outlet></router-outlet>
   </div>
 </md-sidenav-container>

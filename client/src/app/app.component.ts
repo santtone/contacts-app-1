@@ -3,6 +3,7 @@ import {NavigationEnd, Router} from "@angular/router";
 import * as _ from 'lodash';
 import {MdSidenav} from "@angular/material";
 import {MediaChange, ObservableMedia} from "@angular/flex-layout";
+import {ToolbarProperties, ToolbarService} from "./utils/toolbar.service";
 
 @Component({
   selector: 'ca-app-root',
@@ -11,14 +12,16 @@ import {MediaChange, ObservableMedia} from "@angular/flex-layout";
 })
 export class AppComponent implements OnInit {
 
+  toolbarProperties: ToolbarProperties;
   toolbarDisabled: boolean;
   sidenavMode: string;
 
   @ViewChild('sidenav') sidenav: MdSidenav;
 
-  constructor(private router: Router, private media: ObservableMedia) {
+  constructor(private router: Router, private media: ObservableMedia, private toolbar: ToolbarService) {
     this.toolbarDisabled = false;
-    this.sidenavMode = 'over'
+    this.sidenavMode = 'over';
+    this.toolbarProperties = toolbar.defaultProperties;
   }
 
   ngOnInit(): void {
@@ -34,6 +37,9 @@ export class AppComponent implements OnInit {
       });
     this.media.subscribe((change: MediaChange) => {
       this.sidenavMode = (change.mqAlias == 'xs') || (change.mqAlias == 'sm') ? 'over' : 'side';
+    });
+    this.toolbar.propertiesChanged.subscribe((properties: ToolbarProperties) => {
+      this.toolbarProperties = properties;
     });
   }
 

@@ -33,11 +33,13 @@ import {HttpService} from "./utils/http.service";
 import {ContactAddressPipe} from './contact/pipes/contact-address.pipe';
 import {UserApiService} from "./user/services/user-api.service";
 import { ContactInfoComponent } from './contact/contact-info/contact-info.component';
+import {ToolbarService} from "./utils/toolbar.service";
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'contacts', component: ContactListComponent},
+  {path: 'contacts/new', component: ContactComponent},
   {path: 'contacts/:id', component: ContactComponent}
 ];
 
@@ -80,7 +82,8 @@ export function getHttp(backend: ConnectionBackend, options: RequestOptions) {
     DeviceService,
     UserService,
     AuthenticationService,
-    UserApiService
+    UserApiService,
+    ToolbarService
   ],
   entryComponents: [ContactDialogComponent, MapDialogComponent],
   bootstrap: [AppComponent]

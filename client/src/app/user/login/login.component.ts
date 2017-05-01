@@ -2,22 +2,23 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {User} from "../user";
 import {Router} from "@angular/router";
 import {UserService} from "../services/user.service";
+import {ToolbarProperties, ToolbarService} from "../../utils/toolbar.service";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
   user: User;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, private toolbar: ToolbarService) {
   }
 
   ngOnInit() {
     this.user = new User();
+    this.toolbar.create(new ToolbarProperties(null, null, null, true));
   }
 
   login() {
