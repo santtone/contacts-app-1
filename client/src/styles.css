@@ -45,15 +45,6 @@ html, body {
   opacity: .70;
 }
 
-.mat-sidenav-content{
-  overflow: hidden !important;
-}
-
 .mat-sidenav-container {
   background-color: initial;
-}
-
-.mat-toolbar {
-  position: fixed;
-  z-index: 9999;
 }

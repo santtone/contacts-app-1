@@ -1,7 +1,7 @@
 //angular modules
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NgModule} from '@angular/core';
+import {enableProdMode, NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {ConnectionBackend, Http, HttpModule, RequestOptions, XHRBackend} from '@angular/http';
 import {MaterialModule, MdDialogRef} from '@angular/material';

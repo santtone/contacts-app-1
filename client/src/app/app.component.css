@@ -1,6 +1,7 @@
 .ca-app-container {
   overflow: auto;
   height: 100%;
+  padding-top: 24px;
 }
 
 .ca-sidenav{
@@ -26,8 +27,4 @@
   background-size: cover;
   padding: 12px;
   color: white;
-}
-
-.ca-toolbar-placeholder-fix {
-  height: 70px;
 }
