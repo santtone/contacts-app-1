@@ -11,23 +11,7 @@
     <div class="ca-sidenav-content">Content</div>
   </md-sidenav>
   <div class="toolbar-and-content" fxFlexFill fxLayout="column" fxLayoutAlign="start stretch">
-    <md-toolbar *ngIf="!toolbarProperties.hidden" class="mat-elevation-z5" color="primary">
-      <div fxLayout="row" fxLayoutAlign="start center" fxFlexFill>
-        <button caVibration *ngIf="!toolbarProperties.backEnabled" md-icon-button (click)="toggle()">
-          <md-icon>menu</md-icon>
-        </button>
-        <button caVibration *ngIf="toolbarProperties.backEnabled" md-icon-button (click)="navigateBack()">
-          <md-icon>arrow_back</md-icon>
-        </button>
-        <div fxFlex="100">
-          {{toolbarProperties.title || ''}}
-        </div>
-        <button caVibration *ngIf="toolbarProperties.submitAction" md-icon-button [disabled]="toolbarProperties.submitDisabled"
-                (click)="toolbarProperties.submitAction()">
-          <md-icon>check</md-icon>
-        </button>
-      </div>
-    </md-toolbar>
+    <ca-toolbar (toggleSidenav)="toggleSidenav()"></ca-toolbar>
     <div class="ca-app-container">
       <div *ngIf="!toolbarProperties.hidden" class=""></div>
       <router-outlet></router-outlet>

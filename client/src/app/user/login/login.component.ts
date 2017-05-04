@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.user = new User();
-    this.toolbar.create(new ToolbarProperties(null, null, null, null, true));
+    this.toolbar.create(new ToolbarProperties({hidden: true}));
   }
 
   login() {

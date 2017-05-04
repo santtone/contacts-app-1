@@ -18,11 +18,15 @@ export class ToolbarService {
 
   create(properties) {
     this.properties = _.assign(this.defaultProperties, properties);
-    this.propertiesChanged.next(this.properties);
+    this.changed();
   }
 
-  disableSubmit(disabled: boolean){
+  disableSubmit(disabled: boolean) {
     this.properties.submitDisabled = disabled;
+  }
+
+  changed(){
+    this.propertiesChanged.next(this.properties);
   }
 }
 
@@ -31,13 +35,18 @@ export class ToolbarProperties {
   submitAction: any;
   submitDisabled: boolean;
   backEnabled: boolean;
+  searchEnabled: boolean;
+  searchText: string;
   hidden: boolean;
 
-  constructor(title?: string, submitAction?: any, submitDisabled?: boolean, backEnabled?: boolean, hidden?: boolean) {
-    this.title = title;
-    this.submitAction = submitAction;
-    this.submitDisabled = submitDisabled;
-    this.backEnabled = backEnabled;
-    this.hidden = hidden;
+  constructor(options?: any) {
+    options = options ? options : {};
+    this.title = options.title;
+    this.submitAction = options.submitAction;
+    this.submitDisabled = options.submitDisabled;
+    this.backEnabled = options.backEnabled;
+    this.searchEnabled = options.searchEnabled;
+    this.searchText = options.searchText;
+    this.hidden = options.hidden;
   }
 }

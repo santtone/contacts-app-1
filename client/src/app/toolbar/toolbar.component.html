@@ -1,0 +1,28 @@
+<md-toolbar *ngIf="!toolbarProperties.hidden" class="mat-elevation-z5" color="primary">
+  <div fxLayout="row" fxLayoutAlign="start center" fxFlexFill>
+    <button caVibration *ngIf="!toolbarProperties.backEnabled && !searchActivated" md-icon-button
+            (click)="toggleSidenav.emit()">
+      <md-icon>menu</md-icon>
+    </button>
+    <button caVibration *ngIf="toolbarProperties.backEnabled" md-icon-button (click)="navigateBack()">
+      <md-icon>arrow_back</md-icon>
+    </button>
+    <md-icon *ngIf="searchActivated">search</md-icon>
+    <div fxFlex="100" *ngIf="!searchActivated">
+      {{toolbarProperties.title || ''}}
+    </div>
+    <div fxFlex="100" *ngIf="searchActivated" class="ca-toolbar-search-container">
+      <input class="ca-toolbar-search" type="text" [(ngModel)]="toolbarProperties.searchText"
+             (ngModelChange)="searchTextChanged()"
+             placeholder="search" #search (blur)="toggleSearch()">
+    </div>
+    <button caVibration md-icon-button *ngIf="toolbarProperties.searchEnabled" (click)="toggleSearch()">
+      <md-icon>{{searchActivated ? 'close' : 'search'}}</md-icon>
+    </button>
+    <button caVibration *ngIf="toolbarProperties.submitAction" md-icon-button
+            [disabled]="toolbarProperties.submitDisabled"
+            (click)="toolbarProperties.submitAction()">
+      <md-icon>check</md-icon>
+    </button>
+  </div>
+</md-toolbar>

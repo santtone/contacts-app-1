@@ -14,6 +14,7 @@ import {ToolbarProperties, ToolbarService} from "../../utils/toolbar.service";
 export class ContactListComponent implements OnInit {
 
   contacts: Contact[];
+  searchText: string;
 
   constructor(public contactService: ContactService, public dialog: DialogService,
               private media: ObservableMedia, private router: Router, private toolbar: ToolbarService) {
@@ -22,7 +23,10 @@ export class ContactListComponent implements OnInit {
 
   ngOnInit(): void {
     this.reloadContacts();
-    this.toolbar.create(new ToolbarProperties('Contacts'));
+    this.toolbar.create(new ToolbarProperties({title: 'Contacts', searchEnabled: true}));
+    this.toolbar.propertiesChanged.subscribe((properties: ToolbarProperties) => {
+      this.searchText = properties.searchText;
+    });
   }
 
   addContact() {

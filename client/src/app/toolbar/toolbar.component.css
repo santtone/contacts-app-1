@@ -1,0 +1,13 @@
+.ca-toolbar-search-container{
+  padding-left: 12px;
+}
+
+.ca-toolbar-search{
+  width: 100%;
+  background: initial;
+  border: none;
+  font-size: 18px;
+  color: white;
+  border-bottom: 2px solid white;
+  outline: none;
+}

@@ -35,6 +35,7 @@ import {UserApiService} from "./user/services/user-api.service";
 import { ContactInfoComponent } from './contact/contact-info/contact-info.component';
 import {ToolbarService} from "./utils/toolbar.service";
 import { VibrationDirective } from './utils/vibration.directive';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -59,7 +60,8 @@ export function getHttp(backend: ConnectionBackend, options: RequestOptions) {
     LoginComponent,
     ContactComponent,
     ContactInfoComponent,
-    VibrationDirective
+    VibrationDirective,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
