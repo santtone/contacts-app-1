@@ -28,3 +28,12 @@
   padding: 12px;
   color: white;
 }
+
+.ca-app-container-swipe-area{
+  position: fixed;
+  margin-top: -24px;
+  left: 0;
+  height: 100%;
+  width: 100px;
+  background: transparent;
+}

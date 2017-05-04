@@ -35,7 +35,11 @@ export class AppComponent implements OnInit {
     });
   }
 
-  toggleSidenav() {
+  toggleSidenav(value: boolean) {
+    if(value){
+      this.sidenav.toggle(value);
+      return;
+    }
     this.sidenav.toggle(!this.sidenav._isOpened);
   }
 

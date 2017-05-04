@@ -1,12 +1,14 @@
 //angular modules
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {enableProdMode, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {ConnectionBackend, Http, HttpModule, RequestOptions, XHRBackend} from '@angular/http';
-import {MaterialModule, MdDialogRef} from '@angular/material';
+import {ConnectionBackend, HttpModule, RequestOptions, XHRBackend} from '@angular/http';
+import {MaterialModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule, Routes}   from '@angular/router';
+import {HammerGestureConfig, HAMMER_GESTURE_CONFIG} from '@angular/platform-browser';
+
 //other modules
 import 'rxjs/add/operator/toPromise';
 import {NgPipesModule} from 'ngx-pipes';
@@ -20,6 +22,9 @@ import {ContactDialogComponent} from './contact/contact-dialog/contact-dialog.co
 import {MapDialogComponent} from './map/map-dialog/map-dialog.component';
 import {LoginComponent} from './user/login/login.component';
 import {ContactComponent} from './contact/contact.component';
+import {VibrationDirective} from './utils/vibration.directive';
+import {ToolbarComponent} from './toolbar/toolbar.component';
+import {ContactInfoComponent} from './contact/contact-info/contact-info.component';
 //services
 import {ContactLocalStorageService} from './contact/services/contact-localstorage.service';
 import {ContactService} from './contact/services/contact.service';
@@ -29,13 +34,11 @@ import {DeviceService} from "./utils/device.service";
 import {UserService} from "./user/services/user.service";
 import {AuthenticationService} from "./user/services/authentication.service";
 import {HttpService} from "./utils/http.service";
+import {UserApiService} from "./user/services/user-api.service";
+import {ToolbarService} from "./utils/toolbar.service";
 //pipes
 import {ContactAddressPipe} from './contact/pipes/contact-address.pipe';
-import {UserApiService} from "./user/services/user-api.service";
-import { ContactInfoComponent } from './contact/contact-info/contact-info.component';
-import {ToolbarService} from "./utils/toolbar.service";
-import { VibrationDirective } from './utils/vibration.directive';
-import { ToolbarComponent } from './toolbar/toolbar.component';
+
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -47,6 +50,12 @@ const routes: Routes = [
 
 export function getHttp(backend: ConnectionBackend, options: RequestOptions) {
   return new HttpService(backend, options);
+}
+
+export class HammerConfig extends HammerGestureConfig {
+  overrides = <any>{
+    'swipe': {velocity: 0.4, threshold: 20}
+  }
 }
 
 @NgModule({
@@ -78,6 +87,10 @@ export function getHttp(backend: ConnectionBackend, options: RequestOptions) {
       provide: HttpService,
       useFactory: getHttp,
       deps: [XHRBackend, RequestOptions]
+    },
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: HammerConfig
     },
     DialogService,
     ContactService,

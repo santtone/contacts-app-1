@@ -1,6 +1,7 @@
 <md-sidenav-container class="ca-sidenav-container">
   <md-sidenav *ngIf="!toolbarProperties.hidden" class="ca-sidenav" name="sidenav" #sidenav [mode]="sidenavMode"
-              [opened]="sidenavMode == 'side'">
+              [opened]="sidenavMode == 'side'"
+              (swipeleft)="toggleSidenav(false)">
     <div fxLayout="row" class="ca-sidenav-toolbar">
       <div fxLayout="column" fxLayoutAlign="center start">
         <md-icon style="width: 80px; height: 80px; font-size: 80px">account_circle</md-icon>
@@ -13,7 +14,7 @@
   <div class="toolbar-and-content" fxFlexFill fxLayout="column" fxLayoutAlign="start stretch">
     <ca-toolbar (toggleSidenav)="toggleSidenav()"></ca-toolbar>
     <div class="ca-app-container">
-      <div *ngIf="!toolbarProperties.hidden" class=""></div>
+      <div class="ca-app-container-swipe-area" (swiperight)="toggleSidenav(true)"></div>
       <router-outlet></router-outlet>
     </div>
   </div>
