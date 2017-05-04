@@ -8,6 +8,11 @@
   border: none;
   font-size: 18px;
   color: white;
-  border-bottom: 2px solid white;
+  /*border-bottom: 2px solid white;*/
   outline: none;
+}
+
+.ca-toolbar-search::-webkit-input-placeholder{
+  color: white;
+  opacity: 0.7;
 }

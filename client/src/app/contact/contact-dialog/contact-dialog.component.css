@@ -1,0 +1,12 @@
+.ca-contact-dialog-icon-container{
+  width: calc(100% + 48px);
+  margin: -24px -24px 16px -24px;
+  background: #cfd8dc;
+  height: 150px;
+}
+
+.ca-contact-dialog-icon{
+  width: 80px;
+  height: 80px;
+  font-size: 80px;
+}

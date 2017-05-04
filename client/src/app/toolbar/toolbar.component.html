@@ -14,10 +14,16 @@
     <div fxFlex="100" *ngIf="searchActivated" class="ca-toolbar-search-container">
       <input class="ca-toolbar-search" type="text" [(ngModel)]="toolbarProperties.searchText"
              (ngModelChange)="searchTextChanged()"
-             placeholder="search" #search (blur)="toggleSearch()">
+             placeholder="search..." #search
+             (blur)="!(toolbarProperties.searchText && toolbarProperties.searchText.length) && toggleSearch(false)">
     </div>
-    <button caVibration md-icon-button *ngIf="toolbarProperties.searchEnabled" (click)="toggleSearch()">
-      <md-icon>{{searchActivated ? 'close' : 'search'}}</md-icon>
+    <button caVibration md-icon-button *ngIf="toolbarProperties.searchEnabled && searchActivated"
+            (click)="toggleSearch(false)">
+      <md-icon>close</md-icon>
+    </button>
+    <button caVibration md-icon-button *ngIf="toolbarProperties.searchEnabled && !searchActivated"
+            (click)="toggleSearch(true)">
+      <md-icon>search</md-icon>
     </button>
     <button caVibration *ngIf="toolbarProperties.submitAction" md-icon-button
             [disabled]="toolbarProperties.submitDisabled"

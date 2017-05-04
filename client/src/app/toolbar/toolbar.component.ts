@@ -41,8 +41,12 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
     })
   }
 
-  toggleSearch(){
-    this.searchActivated = !this.searchActivated;
+  toggleSearch(activated){
+    this.searchActivated = activated;
+    if(!this.searchActivated){
+      this.toolbarProperties.searchText = '';
+      this.searchTextChanged();
+    }
   }
 
   navigateBack() {

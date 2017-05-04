@@ -1,6 +1,9 @@
-<h1 md-dialog-title>{{contact.id ? 'Edit Contact' : 'New Contact'}}</h1>
+<!--<h1 md-dialog-title>{{contact.id ? 'Edit Contact' : 'New Contact'}}</h1>-->
+<div class="ca-contact-dialog-icon-container" fxLayoutAlign="center center">
+  <md-icon class="ca-contact-dialog-icon">face</md-icon>
+</div>
 <div md-dialog-content>
-  <ca-contact-info [contact]="contact"></ca-contact-info>
+  <ca-contact-info [contact]="contact" (contactChanged)="validate()"></ca-contact-info>
 </div>
 <div md-dialog-actions>
   <button md-button (click)="cancel()">Cancel</button>

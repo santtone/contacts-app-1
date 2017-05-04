@@ -1,9 +1,10 @@
-import {Component, OnInit, ReflectiveInjector} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Contact} from '../contact';
 import {MdDialogRef} from "@angular/material";
 
 @Component({
-  templateUrl: './contact-dialog.component.html'
+  templateUrl: './contact-dialog.component.html',
+  styleUrls: ['./contact-dialog.component.css']
 })
 export class ContactDialogComponent implements OnInit {
 

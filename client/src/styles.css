@@ -42,7 +42,7 @@ html, body {
 
 /*Overriding Material styles*/
 .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
-  opacity: .70;
+  opacity: 1.0 !important;
 }
 
 .mat-sidenav-container {
