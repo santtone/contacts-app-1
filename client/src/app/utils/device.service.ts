@@ -13,7 +13,6 @@ export class DeviceService {
   }
 
   public vibrate(time?: number) {
-    console.log('vibrating...');
     if (this.cordova) {
       navigator.vibrate(time || 100);
     }

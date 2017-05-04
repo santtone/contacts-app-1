@@ -12,10 +12,12 @@ import {ToolbarProperties, ToolbarService} from "../utils/toolbar.service";
 export class ContactComponent implements OnInit {
 
   contact: Contact;
+  isValid: boolean;
 
   constructor(private route: ActivatedRoute, private router: Router,
               private contactService: ContactService, private  toolbar: ToolbarService) {
     this.contact = new Contact();
+    this.isValid = false;
   }
 
   save() {
@@ -25,7 +27,7 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       let id = +params['id'];
-      this.toolbar.create(new ToolbarProperties(id ? 'Edit Contact' : 'New Contact', this.save.bind(this), true));
+      this.toolbar.create(new ToolbarProperties(id ? 'Edit Contact' : 'New Contact', this.save.bind(this), true, true));
       if (id) {
         this.contactService.findContactById(id).subscribe(contact => {
           this.contact = contact || new Contact();
@@ -33,7 +35,16 @@ export class ContactComponent implements OnInit {
       } else {
         this.contact = new Contact();
       }
+      this.validate();
     });
+  }
+
+  validate() {
+    let valid = !!(this.contact.firstName && this.contact.lastName);
+    if (valid != this.isValid) {
+      this.toolbar.disableSubmit(!valid);
+      this.isValid = valid;
+    }
   }
 
 }

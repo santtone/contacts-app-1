@@ -1,4 +1,4 @@
-<div class="ca-contact-list-container" fxLayout="column" fxLayoutAlign="start center">
+<div *ngIf="contacts && contacts.length" class="ca-contact-list-container" fxLayout="column" fxLayoutAlign="start center">
   <div *ngFor="let contact of contacts | orderBy: 'lastName'; let i = index;" class="ca-contact-list-item">
     <ca-contact-card
       [contact]="contact"

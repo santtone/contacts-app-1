@@ -1,9 +1,9 @@
 <md-input-container>
-  <input mdInput [(ngModel)]="contact.firstName" required placeholder="First name">
+  <input mdInput [(ngModel)]="contact.firstName" required placeholder="First name" (ngModelChange)="contactChanged.emit()">
 </md-input-container>
 <br>
 <md-input-container>
-  <input mdInput [(ngModel)]="contact.lastName" required placeholder="Last name">
+  <input mdInput [(ngModel)]="contact.lastName" required placeholder="Last name" (ngModelChange)="contactChanged.emit()">
 </md-input-container>
 <br>
 <md-input-container>

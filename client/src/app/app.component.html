@@ -22,7 +22,7 @@
         <div fxFlex="100">
           {{toolbarProperties.title || ''}}
         </div>
-        <button caVibration *ngIf="toolbarProperties.submitAction" md-icon-button
+        <button caVibration *ngIf="toolbarProperties.submitAction" md-icon-button [disabled]="toolbarProperties.submitDisabled"
                 (click)="toolbarProperties.submitAction()">
           <md-icon>check</md-icon>
         </button>
