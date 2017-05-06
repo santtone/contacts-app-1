@@ -23,7 +23,7 @@ export class ContactService {
   }
 
   findAllContacts() {
-    return this.contactStore.loadContacts();
+    return this.contactStore.findContacts();
   }
 
   findContactById(id) {

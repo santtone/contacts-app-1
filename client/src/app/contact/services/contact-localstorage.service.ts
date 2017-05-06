@@ -13,7 +13,7 @@ export class ContactLocalStorageService implements ContactStore {
     this.initializeLocalStorage();
   }
 
-  public saveContact(contact: Contact) {
+  public saveContact(contact: Contact): Observable<Contact> {
     let contacts = this.readLocalStorageContacts();
     if (!contact.id) {
       let lastSaved = <Contact>_.maxBy(contacts, 'id');
@@ -25,10 +25,10 @@ export class ContactLocalStorageService implements ContactStore {
       });
     }
     this.writeLocalStorageContacts(contacts);
-    return Observable.of(contacts);
+    return this.findContactById(contact.id);
   }
 
-  public loadContacts() {
+  public findContacts() {
     let contacts: Contact[] = this.readLocalStorageContacts();
     return Observable.of(contacts);
   }
