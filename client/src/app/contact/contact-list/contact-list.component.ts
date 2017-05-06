@@ -4,7 +4,7 @@ import {ContactService} from "../services/contact.service";
 import {DialogService} from "../../utils/dialog.service";
 import {ObservableMedia} from "@angular/flex-layout";
 import {Router} from "@angular/router";
-import {ToolbarProperties, ToolbarService} from "../../utils/toolbar.service";
+import {ToolbarProperties, ToolbarService} from "../../toolbar/toolbar.service";
 
 @Component({
   selector: 'ca-contact-list',

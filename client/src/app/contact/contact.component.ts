@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Contact} from "./contact";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ContactService} from "./services/contact.service";
-import {ToolbarProperties, ToolbarService} from "../utils/toolbar.service";
+import {ToolbarProperties, ToolbarService} from "../toolbar/toolbar.service";
 
 @Component({
   selector: 'ca-contact',

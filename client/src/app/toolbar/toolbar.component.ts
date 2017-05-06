@@ -3,7 +3,7 @@ import {
   ViewContainerRef
 } from '@angular/core';
 import {Location} from '@angular/common';
-import {ToolbarProperties, ToolbarService} from "../utils/toolbar.service";
+import {ToolbarProperties, ToolbarService} from "./toolbar.service";
 
 @Component({
   selector: 'ca-toolbar',

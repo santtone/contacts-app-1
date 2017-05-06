@@ -35,7 +35,7 @@ import {UserService} from "./user/services/user.service";
 import {AuthenticationService} from "./user/services/authentication.service";
 import {HttpService} from "./utils/http.service";
 import {UserApiService} from "./user/services/user-api.service";
-import {ToolbarService} from "./utils/toolbar.service";
+import {ToolbarService} from "./toolbar/toolbar.service";
 //pipes
 import {ContactAddressPipe} from './contact/pipes/contact-address.pipe';
 

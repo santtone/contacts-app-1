@@ -4,7 +4,7 @@ import {NavigationEnd, Router} from "@angular/router";
 import * as _ from 'lodash';
 import {MdSidenav} from "@angular/material";
 import {MediaChange, ObservableMedia} from "@angular/flex-layout";
-import {ToolbarProperties, ToolbarService} from "./utils/toolbar.service";
+import {ToolbarProperties, ToolbarService} from "./toolbar/toolbar.service";
 
 @Component({
   selector: 'ca-app-root',
