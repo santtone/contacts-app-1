@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Http}    from '@angular/http';
 import {ContactStore} from "./contact-store";
 import {Contact} from "../contact";
 import {environment} from '../../../environments/environment';
@@ -14,7 +13,7 @@ export class ContactApiService implements ContactStore {
   constructor(private http: HttpService) {
   }
 
-  loadContacts() {
+  findContacts() {
     return this.http
       .get(this.url)
       .map(function (response) {
