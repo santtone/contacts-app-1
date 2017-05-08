@@ -1,7 +1,10 @@
-﻿namespace ContactsApp.model
+﻿
+namespace ContactsApp.model
 {
     public class Contact
     {
+        public Contact() { }
+
         public Contact(int id, string firstName, string lastName, string phone, string streetAddress, string city)
         {
             Id = id;
@@ -12,7 +15,7 @@
             City = city;
         }
 
-        public int Id { get; }
+        public int Id { get; set; }
 
         public string FirstName { get; set; }
 

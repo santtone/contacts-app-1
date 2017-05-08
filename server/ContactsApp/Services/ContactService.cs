@@ -1,15 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using ContactsApp.model;
+using ContactsApp.Repository;
 
 namespace ContactsApp.Services
 {
     public class ContactService : IContactService
     {
         private readonly List<Contact> _contacts;
+        private readonly IContactRepository _contactRepository;
 
-        public ContactService()
+        public ContactService(IContactRepository contactRepository)
         {
+            _contactRepository = contactRepository;
+
             _contacts = new List<Contact>
             {
                 new Contact(1, "Sami", "Anttonen", "0401234567", "Skinnarilankatu 36", "Lappeenranta"),
@@ -19,7 +23,7 @@ namespace ContactsApp.Services
 
         public List<Contact> FindAllContacts()
         {
-            return _contacts;
+            return _contactRepository.FindAll();
         }
 
         public Contact FindContactById(int id)

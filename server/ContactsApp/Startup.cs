@@ -1,11 +1,13 @@
 ﻿using System;
 using ContactsApp.Config;
+using ContactsApp.Data;
 using ContactsApp.Repository;
 using ContactsApp.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -33,6 +35,7 @@ namespace ContactsApp
             services.AddSingleton<IContactService, ContactService>();
             services.AddSingleton<IUserService, UserService>();
             services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<IContactRepository, ContactRepository>();
 
             services.AddCors(o => o.AddPolicy("DevPolicy", builder =>
             {
@@ -40,6 +43,9 @@ namespace ContactsApp
             }));
             
             services.AddMvc();
+
+            services.AddDbContext<ContactsAppContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddAuthorization(auth =>
             {
