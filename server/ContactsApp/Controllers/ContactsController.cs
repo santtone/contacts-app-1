@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ContactsApp.Controllers
 {
     [Route("api/contacts")]
-    [Authorize("Bearer")]
+    //[Authorize("Bearer")]
     public class ContactsController : Controller
     {
         private readonly IContactService _contactService;
@@ -39,7 +39,7 @@ namespace ContactsApp.Controllers
         [HttpPut("{id}")]
         public void Update(int id, [FromBody]Contact contact)
         {
-            _contactService.UpdateContact(id, contact);
+            _contactService.UpdateContact(contact);
         }
         
         [HttpDelete("{id}")]

@@ -7,24 +7,27 @@ namespace ContactsApp.Repository
 {
     public class UserRepository : IUserRepository
     {
-        private readonly List<User> _users;
+        private readonly DatabaseContext _context;
 
-        public UserRepository()
+        public UserRepository(DatabaseContext context)
         {
-            _users = new List<User>
+            _context = context;
+            var user = new User("admin", "admin", "Admin", "Admin", "admin.admin@saimia.fi");
+            if (FindByUsername(user.Username) == null)
             {
-                new User(new Guid(),"santtone","salasana","Sami","Anttonen","sami.anttonen@saimia.fi")
-            };
+                _context.User.Add(user);
+                _context.SaveChanges();
+            }
         }
 
         public User FindByUsername(string username)
         {
-            return _users.FirstOrDefault(u => u.Username == username);
+            return _context.User.FirstOrDefault(u => u.Username == username);
         }
 
         public User FindByUsernameAndPassword(string username, string password)
         {
-            return _users.FirstOrDefault(u => u.Username == username && u.Password == password);
+            return _context.User.FirstOrDefault(u => u.Username == username && u.Password == password);
         }
     }
 }

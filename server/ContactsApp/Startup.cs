@@ -1,6 +1,5 @@
 ﻿using System;
 using ContactsApp.Config;
-using ContactsApp.Data;
 using ContactsApp.Repository;
 using ContactsApp.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -32,21 +31,32 @@ namespace ContactsApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IContactService, ContactService>();
-            services.AddSingleton<IUserService, UserService>();
-            services.AddSingleton<IUserRepository, UserRepository>();
-            services.AddSingleton<IContactRepository, ContactRepository>();
+            var config = Configuration.GetSection("AppSettings").Get<AppSettings>();
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
+            services.AddScoped<IContactService, ContactService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IContactRepository, ContactRepository>();
+
+            //COnfigure Cors
             services.AddCors(o => o.AddPolicy("DevPolicy", builder =>
             {
                 builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
             }));
-            
+
             services.AddMvc();
 
-            services.AddDbContext<ContactsAppContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //Configure database
+            services.AddDbContext<DatabaseContext>(options =>
+            {
+                if (config.UseInMemoryDatabase)
+                    options.UseInMemoryDatabase();
+                else
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            });
 
+            //Configure authorization
             services.AddAuthorization(auth =>
             {
                 auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
@@ -63,7 +73,15 @@ namespace ContactsApp
             loggerFactory.AddDebug();
             app.UseCors("DevPolicy");
             ConfigureAuthentication(app);
+            InitializeDatabase(app);
             app.UseMvc();
+        }
+
+        private static void InitializeDatabase(IApplicationBuilder app)
+        {
+            var context = app.ApplicationServices.GetService<DatabaseContext>();
+            if (!context.Database.EnsureCreated())
+                context.Database.Migrate();
         }
 
         private static void ConfigureAuthentication(IApplicationBuilder app)

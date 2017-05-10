@@ -1,60 +1,37 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ContactsApp.Model
 {
     public class User
     {
-        private Guid _id;
-        private string _username;
-        private string _password;
-        private string _firstName;
-        private string _lastName;
-        private string _email;
+        [Key]
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
 
-        public User(Guid id, string username, string password, string firstName, string lastName, string email)
+        public User() { }
+
+        public User(int id, string username, string password, string firstName, string lastName, string email)
         {
-            _id = id;
-            _username = username;
-            _password = password;
-            _firstName = firstName;
-            _lastName = lastName;
-            _email = email;
+            Id = id;
+            Username = username;
+            Password = password;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
         }
 
-        public Guid Id
+        public User(string username, string password, string firstName, string lastName, string email)
         {
-            get => _id;
-            set => _id = value;
-        }
-
-        public string Username
-        {
-            get => _username;
-            set => _username = value;
-        }
-
-        public string Password
-        {
-            get => _password;
-            set => _password = value;
-        }
-
-        public string FirstName
-        {
-            get => _firstName;
-            set => _firstName = value;
-        }
-
-        public string LastName
-        {
-            get => _lastName;
-            set => _lastName = value;
-        }
-
-        public string Email
-        {
-            get => _email;
-            set => _email = value;
+            Username = username;
+            Password = password;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
         }
     }
 }
