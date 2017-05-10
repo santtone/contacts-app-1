@@ -38,13 +38,12 @@ describe('ContactLocalStorageService', () => {
   }));
 
   it('#findContacts should return all contacts', inject([ContactLocalStorageService], (service: ContactLocalStorageService) => {
-    let contacts = contactArray();
-    localStorage.setItem(localStorageKey, JSON.stringify(contacts));
-    let storedIds = _.map(contacts, 'id');
+    let dummyContacts = contactArray();
+    localStorage.setItem(localStorageKey, JSON.stringify(dummyContacts));
     service.findContacts().subscribe((contacts: Contact[]) => {
       expect(contacts.length).toEqual(3);
       _.forEach(contacts, function (c) {
-        expect(storedIds).toContain(c.id);
+        expect(dummyContacts).toContain(_.create(Contact.prototype, c));
       });
     });
   }));
@@ -53,7 +52,9 @@ describe('ContactLocalStorageService', () => {
     let contacts = contactArray();
     localStorage.setItem(localStorageKey, JSON.stringify(contacts));
     service.findContactById(1).subscribe((contact: Contact) => {
-      expect(contact.id).toEqual(1);
+      expect(contact.id).toBe(1);
+      contact = _.create(Contact.prototype, contact);
+      expect(contacts[0]).toEqual(contact);
     })
   }));
 

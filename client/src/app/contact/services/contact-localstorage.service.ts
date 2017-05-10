@@ -33,9 +33,9 @@ export class ContactLocalStorageService implements ContactStore {
     return Observable.of(contacts);
   }
 
-  public findContactById(id) {
+  public findContactById(id): Observable<Contact> {
     let contacts: Contact[] = this.readLocalStorageContacts();
-    return Observable.of(_.find(contacts, {'id': id}))
+    return Observable.of(_.find(contacts, {'id': id}));
   }
 
   public deleteContact(contact: Contact) {
