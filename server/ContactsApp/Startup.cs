@@ -40,7 +40,7 @@ namespace ContactsApp
             services.AddScoped<IContactRepository, ContactRepository>();
 
             //COnfigure Cors
-            services.AddCors(o => o.AddPolicy("DevPolicy", builder =>
+            services.AddCors(o => o.AddPolicy("ContactsAppPolicy", builder =>
             {
                 builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
             }));
@@ -53,7 +53,7 @@ namespace ContactsApp
                 if (config.UseInMemoryDatabase)
                     options.UseInMemoryDatabase();
                 else
-                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                    options.UseSqlServer(Configuration.GetConnectionString("DatabaseConnection"));
             });
 
             //Configure authorization
@@ -71,7 +71,7 @@ namespace ContactsApp
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-            app.UseCors("DevPolicy");
+            app.UseCors("ContactsAppPolicy");
             ConfigureAuthentication(app);
             InitializeDatabase(app);
             app.UseMvc();
@@ -80,7 +80,7 @@ namespace ContactsApp
         private static void InitializeDatabase(IApplicationBuilder app)
         {
             var context = app.ApplicationServices.GetService<DatabaseContext>();
-            if (!context.Database.EnsureCreated())
+            if (context.Database.EnsureCreated())
                 context.Database.Migrate();
         }
 

@@ -22,7 +22,11 @@ export class ContactApiService implements ContactStore {
   }
 
   findContactById(id): Observable<Contact> {
-    return null;
+    return this.http
+      .get(this.url)
+      .map(function (response) {
+        return response.json() as Contact;
+      });
   }
 
   saveContact(contact: Contact) {
