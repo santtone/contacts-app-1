@@ -4,6 +4,7 @@
 - Server - C# .NET Core Web API (Visual Studio 2017)
 - Cordova - Hybrid app (Android)
 
+
 ## Pre-requisites
 ##### Client
 ```
