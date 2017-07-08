@@ -25,20 +25,6 @@ export class HttpService extends Http {
     return this.intercept(super.request(url, options));
   }
 
-  get(url: string, options?: RequestOptionsArgs, skipInterceptor?: boolean): Observable<Response> {
-    if (skipInterceptor) {
-      return super.get(url, options);
-    }
-    return this.intercept(super.get(url, options));
-  }
-
-  post(url: string, body: any, options?: RequestOptionsArgs, skipInterceptor?: boolean): Observable<Response> {
-    if (skipInterceptor) {
-      return super.post(url, body, options);
-    }
-    return this.intercept(super.post(url, body, options));
-  }
-
   saveToken(token: string) {
     this.authToken = token;
   }
